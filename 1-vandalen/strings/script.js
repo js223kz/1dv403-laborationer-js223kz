@@ -7,10 +7,14 @@ window.onload = function(){
 		// Plats för förändring.		
 		// Returnera den konverterade strängen.
 		// Vid fel, kasta ett undantag med ett meddelande till användaren. 
+			var replaceChar;
+			var replaceUpper;
+			var i = 0;
+
+			replaceChar = str.replace(/[Aa]/g, "#");
+			
 	
-
-
-
+		return replaceChar;		
 
 
 
