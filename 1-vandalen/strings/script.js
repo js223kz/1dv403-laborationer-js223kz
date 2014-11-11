@@ -2,29 +2,27 @@
 
 window.onload = function(){
 
-	// I denna funktion ska du skriva koden för att hantera "spelet"
 	var convertString = function(str){
 
- 			var changedString;
-			changedString = str.replace(/[Aa]/g, "#");
-			var newString;
-			var newString_2= [];
+ 		var changedString = "";
 
-			for(var i = 0; i < changedString.length; i+=1){
-				var char = changedString.charAt(i);
-
-				if(/[A-Z]/g.test(char)){
-					newString = char.toLowerCase();
-
-				}else{
-					newString = char.toUpperCase();	
-				}
-				newString_2.push(newString);
+		for(var i = 0; i < str.length; i+=1){
+				
+			var stringChar = str.charAt(i);
+				
+			if(/[Aa]/g.test(stringChar)){
+				stringChar = stringChar.replace(/[Aa]/g, "#");
+					
+			}else if(/[A-Z]/g.test(stringChar)){
+				stringChar = stringChar.toLowerCase();
+				
+			}else{
+				stringChar = stringChar.toUpperCase();
+					
 			}
-			newString_2.toString();
-		
-		return newString_2;
-
+				changedString += stringChar;
+			}
+		return changedString;
 	};
 	// ------------------------------------------------------------------------------
 
