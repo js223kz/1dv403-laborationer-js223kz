@@ -4,6 +4,10 @@ window.onload = function(){
 
 	var convertString = function(str){
 
+		if(str === ""){
+			throw new Error("Du måste skriva in en text");
+		}
+ 		
  		var changedString = "";
 
 		for(var i = 0; i < str.length; i+=1){
