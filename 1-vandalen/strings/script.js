@@ -20,9 +20,11 @@ window.onload = function(){
 			}else if(/[A-Z]/g.test(stringChar)){
 				stringChar = stringChar.toLowerCase();
 				
-			}else{
+			}else if(/[a-z]/g.test(stringChar)){
 				stringChar = stringChar.toUpperCase();
 					
+			}else{
+				
 			}
 				changedString += stringChar;
 			}
