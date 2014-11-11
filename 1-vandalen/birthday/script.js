@@ -4,12 +4,28 @@ window.onload = function(){
 
 	
 	var birthday = function(date){
-		
-
-
-			// Din kod här.
-
-
+	var checkBirthdayFormat = (/^(\d{4})-(\d{1,2})-(\d{1,2})$/);
+	
+	var now = new Date();
+	
+	var inputYear = date.slice(0, 4);
+	var inputMonth = date.slice(5, 7);
+	var inputDay = date.slice(8, 11);
+	var inputBirthday = new Date(inputYear, inputMonth -1, inputDay, now.getHours(), now.getMinutes(), now.getSeconds(), now.getMilliseconds());
+	
+	if (!date.match(checkBirthdayFormat)){
+	 	throw new Error("Formatet på din födelsedag är ogiltig");
+	 }
+	 
+	 console.log(inputBirthday);
+	 
+	 var leftBday = now.getTime();
+	 var daysLeft = (inputBirthday-leftBday)/86400000;
+	 if(daysLeft < 0){
+	 	throw new Error("Du har redan fyllt år. Grattis i efterskott!");
+	 }
+	 
+	 return daysLeft;
 
 
 	};
