@@ -9,7 +9,7 @@ window.onload = function(){
 		
 		var now = new Date();
 		var daysLeft;
-		
+	
 		//user input data
 		var inputYear = date.slice(0, 4);
 		var inputMonth = date.slice(5, 7);
