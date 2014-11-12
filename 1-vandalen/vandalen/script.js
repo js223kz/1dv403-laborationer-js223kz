@@ -1,18 +1,31 @@
 "use strict";
 
 var makePerson = function(persArr){
+    var namesArray = [];
+    var agesArray = [];
+    var nameString;
+    var totalAge;
     
     function logArrayElements(elem, index, arr) {
-  console.log(elem.name);
-}
+            namesArray[index] = elem.name;
+            agesArray[index] = elem.age;
+    }
 
-// Note ellision, there is no member at 2 so it isn't visited
-        persArr.forEach(logArrayElements);
+    persArr.forEach(logArrayElements);
             
+    namesArray.sort(function(a, b) {
+        return a.localeCompare(b);
+    });
+        
+    nameString= namesArray.join(", ");
     
+    agesArray.reduce(function(sum, elem, index, arr){
+    totalAge = sum + elem;
+    });
+
     
     /*var i = 0;
-    var namesArray = [];
+    
     var agesArray = [];
     var average = 0;
 
@@ -21,20 +34,20 @@ var makePerson = function(persArr){
         agesArray[i] = persArr[i].age;
         average += persArr[i].age;
     }
-    namesArray.sort(function(a, b) {
-        return a.localeCompare(b);
-});
-   var newString = namesArray.join(", ");
+
    
    agesArray.sort();
    var minAge = agesArray[0];
    var maxAge = agesArray[agesArray.length -1];
    average = Math.round(average / agesArray.length);*/
     var result = {};
+    result.names = nameString;
+    
+    console.log(nameString);
     /*result.minAge = minAge;
     result.maxAge = maxAge;
     result.averageAge = average;
-    result.names = newString;
+    
     console.log(result);*/
     return result;
 }
