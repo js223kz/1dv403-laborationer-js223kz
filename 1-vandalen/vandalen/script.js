@@ -9,13 +9,22 @@ var makePerson = function(persArr){
     var minAge;
     var maxAge;
     
-    function logArrayElements(elem, index, arr) {
-            namesArray[index] = elem.name;
-            agesArray[index]= +elem.age;
+    function getArrayElements(elem, index, arr) {
+        if(typeof elem.name != "string"){
+            throw new Error("Namnet saknas eller innehåller ogiltiga tecken.");
+        }
+        if(typeof elem.age != "number"){
+            throw new Error("Åldern saknas eller innehåller ogiltiga tecken.");
+        }
+        
+        namesArray[index] = elem.name;
+        agesArray[index]= elem.age;
+        
+        console.log(typeof elem.age);
+                
     }
-   
-
-    persArr.forEach(logArrayElements);
+    persArr.forEach(getArrayElements);
+    
     namesArray.sort(function(a, b) {
         return a.localeCompare(b);
     });
