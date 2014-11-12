@@ -2,7 +2,7 @@
 
 window.onload = function(){
 	
-	var secret = Math.floor( Math.random() * 100) +1;
+	var secret = Math.floor( Math.random() * (100-0));
 	var guesses = 0;
 
 	var guess = function(number){

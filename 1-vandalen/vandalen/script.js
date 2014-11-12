@@ -1,6 +1,8 @@
 "use strict";
 
 var makePerson = function(persArr){
+    
+    var result = {};
     var namesArray = [];
     var agesArray = [];
     var nameString;
@@ -10,21 +12,21 @@ var makePerson = function(persArr){
     var maxAge;
     
     function getArrayElements(elem, index, arr) {
-        if(typeof elem.name != "string"){
+        namesArray[index] = elem.name;
+        agesArray[index] = elem.age;
+        
+        if(typeof elem.name !== "string"){
             throw new Error("Namnet saknas eller innehåller ogiltiga tecken.");
         }
-        if(typeof elem.age != "number"){
+        if(typeof elem.age !== "number"){
             throw new Error("Åldern saknas eller innehåller ogiltiga tecken.");
         }
-        
-        namesArray[index] = elem.name;
-        agesArray[index]= elem.age;
-        
         console.log(typeof elem.age);
                 
     }
     persArr.forEach(getArrayElements);
     
+    //sort names with regard to local swedish letters
     namesArray.sort(function(a, b) {
         return a.localeCompare(b);
     });
@@ -36,13 +38,15 @@ var makePerson = function(persArr){
     minAge = agesArray[0];
     maxAge = agesArray[agesArray.length -1];
 
+    //calculate total sum of ages
     totalAge = agesArray.reduce(function(sum, elem, index, arr){
         return sum + elem;
     });
     
+    //calculate average of ages
     averageAge = Math.round(totalAge / agesArray.length);
-
-    var result = {};
+    
+    //setting properties to result object
     result.minAge = minAge;
     result.maxAge = maxAge;
     result.averageAge = averageAge;
