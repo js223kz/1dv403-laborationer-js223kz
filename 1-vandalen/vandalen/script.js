@@ -1,7 +1,6 @@
 "use strict";
 
 var makePerson = function(persArr){
-    
     var result = {};
     var namesArray = [];
     var agesArray = [];
@@ -26,12 +25,12 @@ var makePerson = function(persArr){
     }
     persArr.forEach(getArrayElements);
     
-    //sort names with regard to local swedish letters
-    namesArray.sort(function(a, b) {
+    //sort names with regards to local swedish letters
+    namesArray.sort(function(a, b) {    
         return a.localeCompare(b);
     });
         
-    nameString= namesArray.join(", ");
+    nameString = namesArray.join(", ");
     
     agesArray.sort();
     
@@ -51,6 +50,7 @@ var makePerson = function(persArr){
     result.maxAge = maxAge;
     result.averageAge = averageAge;
     result.names = nameString;
+    
     
     console.log(result);
     
