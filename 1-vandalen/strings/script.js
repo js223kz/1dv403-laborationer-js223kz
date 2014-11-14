@@ -14,8 +14,8 @@ window.onload = function(){
 				
 			var stringChar = str.charAt(i);
 				
-			if(/[Aa]/g.test(stringChar)){
-				stringChar = stringChar.replace(/[Aa]/g, "#");
+			if(/a/gi.test(stringChar)){
+				stringChar = stringChar.replace(/a/gi, "#");
 					
 			}else if(/[A-Z]/g.test(stringChar)){
 				stringChar = stringChar.toLowerCase();

@@ -1,59 +1,45 @@
 "use strict";
 
 var makePerson = function(persArr){
-    var result = {};
-    var namesArray = [];
-    var agesArray = [];
-    var nameString;
     var totalAge;
+    var nameString;
     var averageAge;
-    var minAge;
-    var maxAge;
     
-    function getArrayElements(elem, index, arr) {
-        namesArray[index] = elem.name;
-        agesArray[index] = elem.age;
+    var names = persArr.map(function(names){
+        if(isNaN(names.name)){
+            return names.name;
+        }
         
-        if(typeof elem.name !== "string"){
-            throw new Error("Namnet saknas eller innehåller ogiltiga tecken.");
+    });
+    sortNames(names);
+    
+    var ages = persArr.map(function(ages){
+        if(!isNaN(ages.age)){
+            return ages.age;
         }
-        if(typeof elem.age !== "number"){
-            throw new Error("Åldern saknas eller innehåller ogiltiga tecken.");
-        }
-        console.log(typeof elem.age);
-                
+    });
+    sortAges(ages);
+    
+    nameString = names.join(", ");
+    
+    totalAge = ages.reduce(function(sum, elem, index, arr){
+            return sum + elem;
+    });
+    
+    averageAge = Math.round(totalAge / ages.length);
+    
+    function sortNames(arr){
+        arr.sort(function(a, b){
+            return a.localeCompare(b);
+        });
     }
-    persArr.forEach(getArrayElements);
-    
-    //sort names with regards to local swedish letters
-    namesArray.sort(function(a, b) {    
-        return a.localeCompare(b);
-    });
-        
-    nameString = namesArray.join(", ");
-    
-    agesArray.sort();
-    
-    minAge = agesArray[0];
-    maxAge = agesArray[agesArray.length -1];
-
-    //calculate total sum of ages
-    totalAge = agesArray.reduce(function(sum, elem, index, arr){
-        return sum + elem;
-    });
-    
-    //calculate average of ages
-    averageAge = Math.round(totalAge / agesArray.length);
-    
-    //setting properties to result object
-    result.minAge = minAge;
-    result.maxAge = maxAge;
-    result.averageAge = averageAge;
-    result.names = nameString;
-    
-    
-    console.log(result);
-    
+    function sortAges(arr){
+        arr.sort();
+        return arr;
+    }
+    var result = {minAge: ages[0], maxAge: ages[ages.length -1], averageAge: averageAge, names: nameString};
+   
+    //console.log(result);
     return result;
-}
+};
 

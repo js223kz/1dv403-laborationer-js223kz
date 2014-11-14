@@ -14,21 +14,26 @@ window.onload = function(){
 		var inputYear = date.slice(0, 4);
 		var inputMonth = date.slice(5, 7);
 		var inputDay = date.slice(8, 11);
-		var inputBirthday = new Date(inputYear, inputMonth -1, inputDay, now.getHours(), now.getMinutes(), now.getSeconds(), now.getMilliseconds());
+		var inputBirthday = new Date(now.getFullYear(), inputMonth -1, inputDay, now.getHours(), now.getMinutes(), now.getSeconds(), now.getMilliseconds());
 		
 		//check if user input format is valid
 		if (!date.match(checkBirthdayFormat)){
 		 	throw new Error("Formatet på din födelsedag är ogiltig");
 		 }
 		 
+		 if(inputBirthday.getTime() < now.getTime()){
+		 	inputBirthday.setFullYear(inputBirthday.getFullYear() + 1);
+		 }
+		 
+		 
 		 //days left from today to birthday
-		 daysLeft = (inputBirthday-now)/86400000;
+		 daysLeft = (inputBirthday.getTime()-now.getTime())/86400000;
 		 
 		 if(daysLeft < 0){
 		 	throw new Error("Du har redan fyllt år. Grattis i efterskott!");
 		 }
 		 
-		 return daysLeft;
+		 return Math.ceil(daysLeft);
 	};
 	// ------------------------------------------------------------------------------
 
