@@ -1,0 +1,47 @@
+@import 'grid.less';
+
+@columns: 12;
+@column-width: 60;
+@gutter-width: 20;
+@total-width: 100%;
+
+@media screen and (max-width: 960px) {
+	header { .column(12); }
+}
+
+.Round{
+    -webkit-border-radius: 100px;
+       -moz-border-radius: 100px;
+            border-radius: 100px;   
+}
+body{
+    background: darken(#c1aa81, 50%);
+}
+#wrapper {
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+	min-height: 100%;
+}
+header{
+    .column(12);
+    height: 150px;
+}
+main{
+    .column(12);
+    .Round;
+    height: auto;
+    min-height: 700px;
+    border: 2px dotted #f9a102;
+}
+section{
+    .column(7);
+    height: auto;
+    min-height: 700px;
+    border-right: 2px dotted #f9a102;
+}
+aside{
+    .column(4);
+    height: auto;
+    min-height: 700px;
+}

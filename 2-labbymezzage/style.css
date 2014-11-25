@@ -1,0 +1,70 @@
+body {
+  width: 100%;
+  *zoom: 1;
+}
+body:before,
+body:after {
+  content: "";
+  display: table;
+}
+body:after {
+  clear: both;
+}
+@media screen and (max-width: 960px) {
+  header {
+    display: inline;
+    float: left;
+    width: 97.91666667%;
+    margin: 0 1.04166667%;
+  }
+}
+.Round {
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+}
+body {
+  background: #2d2516;
+}
+#wrapper {
+  width: 80%;
+  margin-right: auto;
+  margin-left: auto;
+  min-height: 100%;
+}
+header {
+  display: inline;
+  float: left;
+  width: 97.91666667%;
+  margin: 0 1.04166667%;
+  height: 150px;
+}
+main {
+  display: inline;
+  float: left;
+  width: 97.91666667%;
+  margin: 0 1.04166667%;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+  height: auto;
+  min-height: 700px;
+  border: 2px dotted #f9a102;
+}
+section {
+  display: inline;
+  float: left;
+  width: 56.25%;
+  margin: 0 1.04166667%;
+  height: auto;
+  min-height: 700px;
+  border-right: 2px dotted #f9a102;
+}
+aside {
+  display: inline;
+  float: left;
+  width: 31.25%;
+  margin: 0 1.04166667%;
+  height: auto;
+  min-height: 700px;
+}
