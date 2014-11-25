@@ -10,21 +10,13 @@ body:after {
 body:after {
   clear: both;
 }
-@media screen and (max-width: 960px) {
-  header {
-    display: inline;
-    float: left;
-    width: 97.91666667%;
-    margin: 0 1.04166667%;
-  }
-}
 .Round {
-  -webkit-border-radius: 100px;
-  -moz-border-radius: 100px;
-  border-radius: 100px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
 }
 body {
-  background: #2d2516;
+  background: #aa5588;
 }
 #wrapper {
   width: 80%;
@@ -39,26 +31,48 @@ header {
   margin: 0 1.04166667%;
   height: 150px;
 }
+#headline {
+  display: inline;
+  float: left;
+  width: 97.91666667%;
+  margin: 0 1.04166667%;
+  font-family: 'Sofia', cursive;
+  text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.4);
+  color: #552255;
+  font-size: 8em;
+}
 main {
   display: inline;
   float: left;
   width: 97.91666667%;
   margin: 0 1.04166667%;
-  -webkit-border-radius: 100px;
-  -moz-border-radius: 100px;
-  border-radius: 100px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
   height: auto;
   min-height: 700px;
-  border: 2px dotted #f9a102;
+  border: 2px dotted #552255;
 }
 section {
   display: inline;
   float: left;
   width: 56.25%;
   margin: 0 1.04166667%;
+  margin-top: 50px;
   height: auto;
   min-height: 700px;
-  border-right: 2px dotted #f9a102;
+}
+#writemessage {
+  display: inline;
+  float: left;
+  width: 31.25%;
+  margin: 0 1.04166667%;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  height: 60%;
+  background: #ccddee;
+  position: absolute;
 }
 aside {
   display: inline;
