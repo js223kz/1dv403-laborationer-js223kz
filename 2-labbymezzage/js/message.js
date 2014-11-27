@@ -26,9 +26,12 @@ Message.prototype.toString = function(){
 };
 
 Message.prototype.getHTMLText = function(){
-    return this.getText().replace((/(\n)+/g, '<br />'));
+    var htmlTxt = this.getText();
+    htmlTxt = htmlTxt.replace(/\r?\n/g, '<br />');
+
+    return htmlTxt;
 };
 
 Message.prototype.getDateText = function(){
-    
+    return this.getDate().toLocaleTimeString();
 };

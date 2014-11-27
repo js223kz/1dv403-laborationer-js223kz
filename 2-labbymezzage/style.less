@@ -5,16 +5,16 @@
 @gutter-width: 20;
 @total-width: 100%;
 
-@media screen and (max-width: 960px) {
 
-}
-.Round{
-    -webkit-border-radius:20px;
-       -moz-border-radius:20px;
-            border-radius:20px;   
+.Round(@radius){
+    -webkit-border-radius:@radius;
+       -moz-border-radius:@radius;
+            border-radius:@radius;   
 }
 
 @darkpurple: #552255;
+@defaultFont: 'Princess Sofia';
+
 body{
     background: #aa5588;
 }
@@ -30,7 +30,8 @@ header{
 }
 #headline{
     .column(12);
-    font-family: 'Sofia', cursive;
+    margin-left: 20px;
+    font-family: @defaultFont, cursive;
     text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.4);
     color: @darkpurple;
     font-size: 8em;
@@ -38,26 +39,60 @@ header{
 
 main{
     .column(12);
-    .Round;
     height: auto;
     min-height: 700px;
-    border: 2px dotted 	@darkpurple;
 }
-section{
+#chatform{
     .column(7);
-    margin-top: 50px;
     height: auto;
     min-height: 700px;
 }
-#writemessage{
+textarea{
+    .Round(4px);
+    padding: 10px;
+    margin-left: 20px;
+    margin-top: 100px;
+    width: 35em;
+    height: 15em;
+    border: 3px dotted 	@darkpurple;
+    color: #000;
+}
+textarea:focus {
+    outline: none;
+    border-style: none;
+}
+button{
+    .Round(4px);
+    width: 200px;
+    padding: 5px;
+    border: 1px solid @darkpurple;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+#listofmessages{
     .column(4);
-    .Round;
-    height: 60%;
-    background: #ccddee;
-    position: absolute;
-}
-aside{
-    .column(4); 
+    .Round(4px);
+    margin-top: 100px;
     height: auto;
     min-height: 700px;
+    background:#fff;
+    opacity: 0.5;
+    border: 3px dotted @darkpurple;
+    
+}
+#numberofmessages{
+    font-family: @defaultFont, cursive;
+    color: @darkpurple;
+    margin-left: 10px;
+}
+article{
+    height: 100px;
+    background: @darkpurple;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+#chatTxt{
+    color: #fff;
+    padding: 5px;
 }
