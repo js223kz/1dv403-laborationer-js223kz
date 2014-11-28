@@ -43,33 +43,45 @@ var MyMessages = {
                 var index = MyMessages.messages.indexOf(item);
                 
                 var listItem = document.createElement("li");
-                listOfMessages.appendChild(listItem); 
+                listOfMessages.appendChild(listItem);
+                
+                var chatDiv = document.createElement("div"); 
+                chatDiv.id = "chatdiv";
+                listItem.appendChild(chatDiv);
+               
+                var chatText = document.createElement("p");
+                chatText.id = "chattext";
+                chatText.innerHTML = item.getHTMLText();
+                chatDiv.appendChild(chatText);
+                
+                var buttonDiv = document.createElement("div"); 
+                buttonDiv.id = "buttondiv";
+                listItem.appendChild(buttonDiv);
                 
                 var deleteBtn = document.createElement("button");  
                 deleteBtn.id = "deletebutton";
-                listItem.appendChild(deleteBtn);
+                buttonDiv.appendChild(deleteBtn);
                  
                 deleteBtn.addEventListener("click", function(){
                     removeMessagesFromList(index);
                 });  
-                
                 var timeStampBtn = document.createElement("button");
                 timeStampBtn.id = "timestampbutton";
-                listItem.appendChild(timeStampBtn);
+                buttonDiv.appendChild(timeStampBtn);
         
                 timeStampBtn.addEventListener("click", function(e){
                     showTimeStamp(item);
                 });
-                
-                var chatText = document.createElement("p");
-                chatText.id = "chattext";
-                chatText.innerHTML = item.getHTMLText();
-                listItem.appendChild(chatText);
-                    
-                var timeStamp = document.createElement("p");
+               
+               var timeStamp = document.createElement("p");
                 timeStamp.id = "timestamp";
                 timeStamp.innerHTML = item.getTimeText();
                 listItem.appendChild(timeStamp);
+                
+                
+                
+               
+                
                 
             });  
         }
