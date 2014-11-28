@@ -115,6 +115,12 @@ li {
   width: 50px;
   height: 50px;
 }
+#timestampbutton {
+  background-image: url("pics/clock.png");
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+}
 #chatTxt {
   color: #fff;
   margin-left: 10px;
