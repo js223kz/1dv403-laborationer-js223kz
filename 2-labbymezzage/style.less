@@ -69,7 +69,7 @@ button{
     margin-left: 20px;
     margin-top: 20px;
 }
-#listofmessages{
+aside{
     .column(4);
     .Round(4px);
     margin-top: 100px;
@@ -85,14 +85,31 @@ button{
     color: @darkpurple;
     margin-left: 10px;
 }
-article{
-    height: 100px;
+ul{
+    list-style-type: none;
+}
+li{
+    height: auto;
     background: @darkpurple;
-    margin-left: 10px;
-    margin-right: 10px;
     margin-bottom: 10px;
+    margin-right: 20px;
+    margin-left: -20px;
+}
+#deletebutton{
+    background-image: url("pics/clock.png");
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
 }
 #chatTxt{
     color: #fff;
-    padding: 5px;
+    margin-left: 10px;
+}
+#timestamp{
+    color: #fff;
+    font-size: 0.6em;
+    font-family: @defaultFont;
+    position: relative;
+    bottom: 10px;
+    left: 350px;
 }
