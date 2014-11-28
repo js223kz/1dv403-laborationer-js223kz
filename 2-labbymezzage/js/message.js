@@ -21,8 +21,8 @@ function Message(message, date){
     
     
 }
-Message.prototype.toString = function(){
-    return this.getText() + "(" + this.getDate() + ")";
+Message.prototype.getDateText = function(){
+    return this.getDate().toLocaleDateString();
 };
 
 Message.prototype.getHTMLText = function(){
@@ -32,6 +32,6 @@ Message.prototype.getHTMLText = function(){
     return htmlTxt;
 };
 
-Message.prototype.getDateText = function(){
+Message.prototype.getTimeText = function(){
     return this.getDate().toLocaleTimeString();
 };

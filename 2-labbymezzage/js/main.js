@@ -10,10 +10,6 @@ var MyMessages = {
         numberOfMessages.innerHTML = 'Antal meddelanden: 0';
         var newMessage;
        
-        
-        
-        
-        
         txtArea.onkeydown = function(e){
             if(e.keyCode === 13 && !e.shiftKey){
                 createNewMessage();
@@ -25,14 +21,10 @@ var MyMessages = {
             createNewMessage();
         });
         
-         
-        
-        
         function createNewMessage(){
             var chatMessage = document.querySelector("textarea");
             newMessage = new Message(chatMessage.value, new Date());
             MyMessages.messages.push(newMessage);
-            
             
             renderList();
             
@@ -41,9 +33,11 @@ var MyMessages = {
         }
         
         function renderList(){
+            
+            showNumberOfMessages();
+            
             var listOfMessages = document.getElementById("listofmessages");
             listOfMessages.innerHTML = "";
-            showNumberOfMessages();
             
             MyMessages.messages.forEach(function(item){
                 var index = MyMessages.messages.indexOf(item);
@@ -55,7 +49,7 @@ var MyMessages = {
                 deleteBtn.id = "deletebutton";
                 listItem.appendChild(deleteBtn);
                  
-                deleteBtn.addEventListener("click", function(e){
+                deleteBtn.addEventListener("click", function(){
                     removeMessagesFromList(index);
                 });  
                 
@@ -63,6 +57,10 @@ var MyMessages = {
                 timeStampBtn.id = "timestampbutton";
                 listItem.appendChild(timeStampBtn);
         
+                timeStampBtn.addEventListener("click", function(e){
+                    showTimeStamp(item);
+                });
+                
                 var chatText = document.createElement("p");
                 chatText.id = "chattext";
                 chatText.innerHTML = item.getHTMLText();
@@ -70,17 +68,30 @@ var MyMessages = {
                     
                 var timeStamp = document.createElement("p");
                 timeStamp.id = "timestamp";
-                timeStamp.innerHTML = item.getDateText();
+                timeStamp.innerHTML = item.getTimeText();
                 listItem.appendChild(timeStamp);
                 
             });  
         }
+        
         function showNumberOfMessages(){
             numberOfMessages.innerHTML = 'Antal meddelanden: ' + MyMessages.messages.length;
         }
+        
         function removeMessagesFromList(index){
-            MyMessages.messages.splice(index, 1);
-            renderList();
+            var dialogMessage = confirm("Sure you want to delete chatmessage?");
+               
+                if(dialogMessage === true ){
+                    MyMessages.messages.splice(index, 1);
+                    renderList();
+            	    return true;
+               }else{
+            	    return false;
+               }
+         
+        }
+        function showTimeStamp(item){
+            alert("Detta meddelande skapades: " + item.getDateText() + " klockan " + item.getTimeText());
         }
     }
 };
