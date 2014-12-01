@@ -22,16 +22,16 @@ function Message(message, date){
     
 }
 Message.prototype.getDateText = function(){
-    return this.getDate().toLocaleDateString();
-};
 
+    return this.getDate().toLocaleString();
+    
+};
 Message.prototype.getHTMLText = function(){
     var htmlTxt = this.getText();
     htmlTxt = htmlTxt.replace(/\r?\n/g, '<br />');
 
     return htmlTxt;
 };
-
 Message.prototype.getTimeText = function(){
     return this.getDate().toLocaleTimeString();
 };

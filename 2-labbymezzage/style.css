@@ -112,33 +112,43 @@ ul {
   height: auto;
 }
 li {
-  width: 90%;
+  max-width: 90%;
+  min-width: 90%;
   height: auto;
   background: #552255;
   color: #fff;
   margin-left: -20px;
-  padding: 5px;
-}
-#chatTxt {
+  margin-bottom: 10px;
+  float: left;
   font-size: 0.7em;
+  font-family: 'Helvetica', Arial, Sans-Serif;
 }
 #chatdiv {
-  width: 70%;
+  max-width: 90%;
+  min-width: 90%;
   height: auto;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 10px;
+  float: left;
 }
 #buttondiv {
-  width: 25%;
+  max-width: 90%;
+  min-width: 90%;
+  margin-right: 5%;
+  float: left;
   height: auto;
+  margin-bottom: 20px;
 }
 #deletebutton {
-  background-image: url("pics/clock.png");
+  background-image: url("pics/delete.png");
   background-repeat: no-repeat;
   width: 22px;
   max-width: 22px;
   height: 22px;
 }
 #timestampbutton {
-  background-image: url("pics/delete.png");
+  background-image: url("pics/clock.png");
   background-repeat: no-repeat;
   width: 22px;
   max-width: 22px;
@@ -146,6 +156,11 @@ li {
 }
 #timestamp {
   color: #fff;
+  height: auto;
   font-size: 0.6em;
   font-family: 'Princess Sofia';
+  float: none;
+  margin-left: 5%;
+  max-width: 90%;
+  min-width: 90%;
 }
