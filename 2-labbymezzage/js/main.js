@@ -47,7 +47,7 @@ var MyMessages = {
             var listOfMessages = document.getElementById("listofmessages");
             listOfMessages.innerHTML = "";
             
-            //loop through the array and prin out all messages as li elements
+            //loop through the array and print out all messages as li elements
             MyMessages.messages.forEach(function(item){
                 var index = MyMessages.messages.indexOf(item);
                 
@@ -82,7 +82,6 @@ var MyMessages = {
                     timeStamp.id = "timestamp";
                     timeStamp.innerHTML = item.getTimeText();
                     listItem.appendChild(timeStamp);
-                    
             }); 
         }
         

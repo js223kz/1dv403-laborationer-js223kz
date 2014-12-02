@@ -18,24 +18,22 @@ body {
   float: left;
   width: 97.91666667%;
   margin: 0 1.04166667%;
-  margin-right: auto;
-  margin-left: auto;
   min-height: 100%;
 }
 header {
   display: inline;
   float: left;
-  width: 89.58333333%;
+  width: 97.91666667%;
   margin: 0 1.04166667%;
-  margin-left: 9.375%;
   height: 150px;
 }
 #headline {
   display: inline;
   float: left;
-  width: 97.91666667%;
+  max-width: 100%;
   margin: 0 1.04166667%;
-  margin-left: 30px;
+  margin-left: auto;
+  margin-right: auto;
   font-family: 'Princess Sofia', cursive;
   text-shadow: 0px 2px 2px rgba(255, 255, 255, 0.4);
   color: #552255;
@@ -49,25 +47,28 @@ main {
   height: auto;
   min-height: 700px;
 }
-#chatform {
+#chatsection {
   display: inline;
   float: left;
   width: 31.25%;
   margin: 0 1.04166667%;
-  margin-left: 9.375%;
+  margin-left: 34.375%;
+  margin-top: 100px;
   height: auto;
   min-height: 700px;
+  border: 3px dotted #552255;
 }
 textarea {
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
   padding: 10px;
-  margin-left: 20px;
-  margin-top: 100px;
-  width: 35em;
+  margin-left: 4%;
+  margin-right: 4%;
+  max-width: 86%;
+  min-width: 86%;
+  float: left;
   height: 15em;
-  border: 3px dotted #552255;
   color: #000;
 }
 textarea:focus {
@@ -86,25 +87,13 @@ button {
   color: #fff;
   border: 1px solid #552255;
 }
-aside {
-  display: inline;
-  float: left;
-  width: 31.25%;
-  margin: 0 1.04166667%;
-  margin-left: 17.70833333%;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  margin-top: 100px;
-  height: auto;
-  min-height: 700px;
-  background: #d89ed8;
-  border: 3px dotted #552255;
-}
 #numberofmessages {
   font-family: 'Princess Sofia', cursive;
   color: #552255;
-  margin-left: 10px;
+  margin-left: 5%;
+  max-width: 90%;
+  min-width: 90%;
+  float: left;
 }
 ul {
   list-style-type: none;
