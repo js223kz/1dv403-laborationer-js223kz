@@ -18,12 +18,9 @@ function Message(message, date){
     
     this.setText(message);
     this.setDate(date);
-    
-    
 }
 Message.prototype.getDateText = function(){
-
-    return this.getDate().toLocaleString();
+    return this.getDate().toLocaleDateString();
     
 };
 Message.prototype.getHTMLText = function(){

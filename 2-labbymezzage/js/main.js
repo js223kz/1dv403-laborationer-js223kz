@@ -94,18 +94,17 @@ var MyMessages = {
         function removeMessagesFromList(index){
             var dialogMessage = confirm("Sure you want to delete chatmessage?");
                
-                if(dialogMessage === true ){
-                    MyMessages.messages.splice(index, 1);
-                    renderMessage();
-            	    return true;
-                }else{
-            	    return false;
-               }
-         
+            if(dialogMessage === true ){
+                MyMessages.messages.splice(index, 1);
+                renderMessage();
+                return true;
+            }else{
+                return false;
+            }
         }
         
         function showTimeStamp(index){
-            alert("Detta meddelande skapades: " + index.getDateText());
+            alert("Detta meddelande skapades: " + index.getDateText() + " klockan " + index.getTimeText());
         }
     }
 };
