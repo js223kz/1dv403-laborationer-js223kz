@@ -73,6 +73,7 @@ var MyMessages = {
                     
                 var deleteBtn = document.createElement("button");  
                     deleteBtn.id = "deletebutton";
+                    
                     deleteBtn.addEventListener("click", function(){
                         removeMessagesFromList(index);
                 });  
