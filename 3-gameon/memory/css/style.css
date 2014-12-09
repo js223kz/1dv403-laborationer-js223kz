@@ -1,0 +1,16 @@
+@import 'reset.css';
+
+#memoryboard{
+    max-width: 90%;
+    width: auto;
+    height: auto;
+    margin: 0px auto;
+    background: #ccc;
+}
+
+img{
+    width: 24px;
+    height: 24px;
+    content:url(../pics/0.png);
+}
+
