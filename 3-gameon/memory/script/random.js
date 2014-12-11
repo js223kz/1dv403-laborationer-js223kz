@@ -15,12 +15,13 @@ var RandomGenerator = {
 	
 	getPictureArray: function(rows, cols)
 	{
+	
 		RandomGenerator.rows = rows;
 		RandomGenerator.cols = cols;
-		
+
 		var numberOfImages = rows*cols;
 		var maxImageNumber = numberOfImages/2;
-	
+		
 	   	var imgPlace = [];
 	
 	   //Utplacering av bilder i Array
@@ -62,4 +63,3 @@ var RandomGenerator = {
 		return imgPlace;
 	}
 };
-
