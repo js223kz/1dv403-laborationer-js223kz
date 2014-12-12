@@ -8,14 +8,16 @@ var Memory = {
         var tileValueArray = [];
         var tileIdArray = [];
         var tilesFlipped = 0;
-        Memory.memoryArray = new RandomGenerator.getPictureArray(3, 4);
-
-        var memoryBoard = document.getElementById("memoryboard");
+        var clicks = 0;
+        Memory.memoryArray = new RandomGenerator.getPictureArray(4, 4);
+        
+        var section = document.getElementById("memoryboard1");
+        var memoryBoard = document.createElement("table");
+        section.appendChild(memoryBoard);
         renderBoard();
         
         //create specific tiles on Memeryboard
         function createTiles(rows, cols){
-            var click = 0;
             var boardLink = document.createElement("a");
                 boardLink.href = "#";
             
@@ -24,10 +26,9 @@ var Memory = {
                 image.imageValue =  Memory.memoryArray[rows*4 + cols];
                 image.id = rows*4 + cols;
                 image.src = "memory/pics/0.png";
-
+            
                 boardLink.addEventListener("click", function(e){
                     toggleImage(image);
-
                 });      
             
             boardLink.appendChild(image);
@@ -54,11 +55,12 @@ var Memory = {
         
         //change image on click
         function toggleImage(image){
-            
+            ++clicks;
+            var numberOfRounds = clicks/2;
             
             var imageSrc = "memory/pics/" + image.imageValue + ".png";
-            
             image.src = imageSrc;
+            
             if(tileValueArray.length < 2){
                 
                 if(tileValueArray.length === 0){
@@ -70,19 +72,17 @@ var Memory = {
 
                     if(tileValueArray[0] === tileValueArray[1]){
                         tilesFlipped +=2;
-                        console.log(tilesFlipped);
                         tileValueArray = [];
                         tileIdArray = [];
+                        
                     }
                     if(tilesFlipped === Memory.memoryArray.length){
-                        console.log("spelet färdigt");
-                        image.imageClicked = false;
-                    }else{
-                        setTimeout(flipBack, 1000); 
-                        image.imageClicked = false;
-                    }
-         }   
-       } 
+                        displayScoreText(numberOfRounds);
+                }else{
+                    setTimeout(flipBack, 1000); 
+                }
+                }   
+            } 
         }
         function flipBack(){
             var tileOne = document.getElementById(tileIdArray[0]);
@@ -92,7 +92,13 @@ var Memory = {
             tileValueArray = [];
             tileIdArray = [];
         }
+        function displayScoreText(numberOfRounds){
             
+            var text = document.createElement("p");
+                text.innerHTML = "Du klarade spelet på " + numberOfRounds + " rundor";
+                section.appendChild(text);
+        }
+
     }
 };
 window.onload = Memory.init;
