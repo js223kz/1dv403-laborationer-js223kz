@@ -3,36 +3,43 @@
 
 var Memory = {
     memoryArray : [],
-    tileArray : [],
+    
     init : function(){
-        
+        var tileValueArray = [];
+        var tileIdArray = [];
+        var tilesFlipped = 0;
         Memory.memoryArray = new RandomGenerator.getPictureArray(3, 4);
 
         var memoryBoard = document.getElementById("memoryboard");
-        console.log(Memory.memoryArray);
         renderBoard();
         
-        function createTiles(i, j){
-            
-            var boardLink = null;
-            var image = null;
-            boardLink = document.createElement("a");
+        //create specific tiles on Memeryboard
+        function createTiles(rows, cols){
+            var click = 0;
+            var boardLink = document.createElement("a");
                 boardLink.href = "#";
-                boardLink.id = Memory.memoryArray[i*4 + j];
-                boardLink.addEventListener("click", function(){
-                    console.log(boardLink.id);
+            
+            var image = document.createElement("img");
+                image.classList.add("id" + Memory.memoryArray[rows*4 + cols]);
+                image.imageValue =  Memory.memoryArray[rows*4 + cols];
+                image.id = rows*4 + cols;
+                image.src = "memory/pics/0.png";
+
+                boardLink.addEventListener("click", function(e){
+                    toggleImage(image);
+
                 });      
-            image = document.createElement("img");
+            
             boardLink.appendChild(image);
             memoryBoard.appendChild(boardLink);   
         }
         
+        //render alla rows and columns on Memoryboard
         function renderBoard() {
+
             var i, j;
-            var rows = null;
-            var columns = null;
-            columns = document.createElement("td");
-            
+            var rows = null; 
+            var columns = document.createElement("td");
             
             for(i = 0; i < RandomGenerator.rows; i++){
                 rows = document.createElement("tr");
@@ -42,10 +49,50 @@ var Memory = {
                     createTiles(i, j);
                     rows.appendChild(columns);
                 }
-                
             }
-           
         }
+        
+        //change image on click
+        function toggleImage(image){
+            
+            
+            var imageSrc = "memory/pics/" + image.imageValue + ".png";
+            
+            image.src = imageSrc;
+            if(tileValueArray.length < 2){
+                
+                if(tileValueArray.length === 0){
+                    tileValueArray.push(image.imageValue);
+                    tileIdArray.push(image.id);
+                }else if(tileValueArray.length === 1){
+                    tileValueArray.push(image.imageValue);
+                    tileIdArray.push(image.id);
+
+                    if(tileValueArray[0] === tileValueArray[1]){
+                        tilesFlipped +=2;
+                        console.log(tilesFlipped);
+                        tileValueArray = [];
+                        tileIdArray = [];
+                    }
+                    if(tilesFlipped === Memory.memoryArray.length){
+                        console.log("spelet färdigt");
+                        image.imageClicked = false;
+                    }else{
+                        setTimeout(flipBack, 1000); 
+                        image.imageClicked = false;
+                    }
+         }   
+       } 
+        }
+        function flipBack(){
+            var tileOne = document.getElementById(tileIdArray[0]);
+            var tileTwo = document.getElementById(tileIdArray[1]);
+            tileOne.src = "memory/pics/0.png";
+            tileTwo.src = "memory/pics/0.png";
+            tileValueArray = [];
+            tileIdArray = [];
+        }
+            
     }
 };
 window.onload = Memory.init;
