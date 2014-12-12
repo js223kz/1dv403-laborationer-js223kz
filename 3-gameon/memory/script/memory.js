@@ -10,7 +10,7 @@ var Memory = {
         var tilesFlipped = 0;
         var clicks = 0;
         Memory.memoryArray = new RandomGenerator.getPictureArray(4, 4);
-        
+
         var section = document.getElementById("memoryboard1");
         var memoryBoard = document.createElement("table");
         section.appendChild(memoryBoard);
@@ -29,6 +29,7 @@ var Memory = {
             
                 boardLink.addEventListener("click", function(e){
                     toggleImage(image);
+                    return false;
                 });      
             
             boardLink.appendChild(image);
@@ -82,7 +83,9 @@ var Memory = {
                     setTimeout(flipBack, 1000); 
                 }
                 }   
-            } 
+               
+            }
+             
         }
         function flipBack(){
             var tileOne = document.getElementById(tileIdArray[0]);
