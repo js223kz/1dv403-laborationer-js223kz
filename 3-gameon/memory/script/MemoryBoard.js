@@ -1,150 +1,114 @@
-function MemoryBoard(rows, cols, memoryBoardID){
-    
-    this.rows = rows;
-    this.cols = cols;
-    this.memoryBoardID = memoryBoardID;
+"use strict";
 
-    var memoryArray = new RandomGenerator.getPictureArray(this.rows, this.cols);
+var MemoryBoard = {
+    tileValueArray : [],
+    tileIdArray : [],
+    memoryArray : [],
     
-    var tilesFlipped = 0;
-    var clicks = 0;
-    var tileValueArray = [];
-    var tileIdArray = [];
+    start: function(rows, cols, memoryBoardID){
     
-    var section = document.getElementById(this.memoryBoardID);
-    var memoryBoard = document.createElement("table");
-    var memoryTitle = document.createElement("h1");
-        memoryTitle.innerHTML = "Memory";
-        section.appendChild(memoryTitle);
-        section.appendChild(memoryBoard);
+        MemoryBoard.memoryArray = new RandomGenerator.getPictureArray(rows, cols);
+        console.log(MemoryBoard.memoryArray);
+        var section = document.getElementById(memoryBoardID);
+        var memoryBoard = document.createElement("table");
+        var memoryTitle = document.createElement("h1");
+            memoryTitle.innerHTML = "Memory";
+            section.appendChild(memoryTitle);
+            section.appendChild(memoryBoard);
+        var tilesFlipped = 0;
+        var clicks = 0;
         
-    
-    this.start = function(){
-       renderBoard();
-    }; 
-    function renderBoard(){
+        renderBoard();
         
-        var i, j;
-        var tileRows = null; 
-        var columns = document.createElement("td");
-        for(i = 0; i < rows; i++){
-            tileRows = document.createElement("tr");
-            memoryBoard.appendChild(tileRows);
-            for(j=0; j< cols; j++){
-                createTiles(i, j);
-                tileRows.appendChild(columns);
-            }
+        function renderBoard(){
+            
+            var i, j;
+            var tileRows = null; 
+            var columns = document.createElement("td");
+            for(i = 0; i < rows; i++){
+                tileRows = document.createElement("tr");
+                memoryBoard.appendChild(tileRows);
                 
-        }    
-    }
-    function createTiles(rows, cols){
-        var boardLink = document.createElement("a");
-            boardLink.href = "#";
-        var image = document.createElement("img");
-            //image.classList.add("id" + memoryArray[rows*4 + cols]);
-            image.imageValue =  memoryArray[rows*4 + cols];
-            image.id = "id"+ rows*4 + cols;
-            image.src = "memory/pics/0.png";
-                    
-            boardLink.addEventListener("click", function(e){
-                flipImage(image);
-                return false;
-            });      
-                    
-            boardLink.appendChild(image);
-            memoryBoard.appendChild(boardLink);   
-    }    
+                for(j=0; j< cols; j++){
+                    createTiles(i, j);
+                    tileRows.appendChild(columns);
+                }
+            }    
+        }
         
-    function flipImage(image){
-        var imageSrc = "memory/pics/" + image.imageValue + ".png";
-            image.src = imageSrc;
-                    
-        if(tileValueArray.length < 2){
+        function createTiles(rows, cols){
+            var boardLink = document.createElement("a");
+                boardLink.href = "#";
+            
+            var image = document.createElement("img");
+                image.classList.add("id" + MemoryBoard.memoryArray[rows*cols + cols]);
+                image.imageValue =  MemoryBoard.memoryArray[rows*cols + cols];
+                image.id = rows*cols + cols;
+                image.src = "memory/pics/0.png";
                         
-            if(tileValueArray.length === 0){
-                tileValueArray.push(image.imageValue);
-                tileIdArray.push(image.id);
-                ++clicks;
-            }else if(tileValueArray.length === 1){
-                           
-                if(tileIdArray[0] !== this.image.id){
+                boardLink.addEventListener("click", function(e){
+                    flipImage(image);
+                    return false;
+                });      
+                        
+                boardLink.appendChild(image);
+                memoryBoard.appendChild(boardLink);   
+        }
+        
+        function flipImage(image){
+            var imageSrc = "memory/pics/" + image.imageValue + ".png";
+                image.src = imageSrc;
+            console.log(MemoryBoard.memoryArray);
+            if(MemoryBoard.tileValueArray.length < 2){
+                            
+                if(MemoryBoard.tileValueArray.length === 0){
+                    MemoryBoard.tileValueArray.push(image.imageValue);
+                    MemoryBoard.tileValueArray.push(image.id);
+                   console.log(MemoryBoard.tileValueArray.length);
                     ++clicks;
-                    tileValueArray.push(image.imageValue);
-                    tileIdArray.push(image.id);
-                }
-        
-                if(tileValueArray[0] === tileValueArray[1]){
-                    tilesFlipped +=2;
-                    tileValueArray = [];
-                    tileIdArray = [];
-                }
-                if(tilesFlipped === memoryArray.length){
-                    displayScoreText(clicks/2);
-                        
+                }else if(MemoryBoard.tileValueArray.length === 1){
+                               
+                    if(MemoryBoard.tileIdArray[0] !== image.id){
+                        ++clicks;
+                        MemoryBoard.tileValueArray.push(image.imageValue);
+                        MemoryBoard.tileValueArray.push(image.id);
+                    }
+            
+                    if(MemoryBoard.tileValueArray[0] === MemoryBoard.tileValueArray[1]){
+                        tilesFlipped +=2;
+                        MemoryBoard.tileValueArray = [];
+                        MemoryBoard.tileIdArray = [];
+                    }
+                    if(tilesFlipped === MemoryBoard.memoryArray.length){
+                        displayScoreText(clicks/2);
                             
-                }else if(tileValueArray.length === 2){
-                    setTimeout(flipBack, 1000); 
-                }else{
+                                
+                    }else if(MemoryBoard.tileValueArray.length === 2){
+                        setTimeout(flipBack, 1000); 
+                    }else{
+                                
+                    }
+                }   
+            } 
+        }
+        
+        function flipBack(){
+            var tileOne = document.getElementById(MemoryBoard.tileIdArray[0]);
+            var tileTwo = document.getElementById(MemoryBoard.tileIdArray[1]);
                             
-                }
-            }   
-        } 
-    }
-    
-    function flipBack(){
-        var tileOne = document.getElementById(tileIdArray[0]);
-        var tileTwo = document.getElementById(tileIdArray[1]);
-                        
-            tileOne.src = "memory/pics/0.png";
-            tileTwo.src = "memory/pics/0.png";
-                        
-        tileValueArray = [];
-        tileIdArray = [];
-    }
-    function displayScoreText(numberOfRounds){
-        var text = document.createElement("p");
-            text.innerHTML = "Du klarade spelet på " + numberOfRounds + " rundor";
-        
-        this.section.appendChild(text);
-    }
-        
-        
-        /*this.getRows = function(){
-            return rows;
-        };
-        this.setRows = function(_rows){
-            rows = _rows;
-        };
-        this.getCols = function(){
-            return cols;
-        };
-        this.setCols = function(_cols){
-            cols = _cols;
-        };
-        this.getID = function(){
-            return memoryBoardID;
-        };
-        this.setID = function(_memoryBoardID){
-            memoryBoardID = _memoryBoardID;
-        };
-        
-        
-        this.setRows(rows);
-        this.setCols(cols);
-        this.setID(memoryBoardID);*/
-} 
-   
-        
-        
-        
-        
-        
-        
-        
-        
-        
+                tileOne.src = "memory/pics/0.png";
+                tileTwo.src = "memory/pics/0.png";
+                            
+            MemoryBoard.tileValueArray = [];
+            MemoryBoard.tileIdArray = [];
+        }
+        function displayScoreText(numberOfRounds){
+            var text = document.createElement("p");
+                text.innerHTML = "Du klarade spelet på " + numberOfRounds + " rundor";
+            
+            section.appendChild(text);
+        }
+    }    
+};
 
-
-
-        
-    
+ 

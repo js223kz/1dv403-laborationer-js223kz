@@ -5,12 +5,8 @@ var Memory = {
     
     init : function(){
        
-    var memoryOne = new MemoryBoard(3, 4, "memoryboard1");
-    var memoryTwo = new MemoryBoard(4, 2, "memoryboard2");
-        
-    memoryOne.start();    
-    memoryTwo.start();
-       
+    var memoryOne = new MemoryBoard.start(3, 4, "memoryboard1");
+    var memoryTwo = new MemoryBoard.start(4, 2, "memoryboard2");
     }
 };
 window.onload = Memory.init;
