@@ -1,19 +1,16 @@
 @import 'reset.css';
 
-header{
-    height: 80px;
-    width: 100%;
+
+
+#memoryboard{
+    max-width:90%;
+    float: left;
 }
 h1{
     margin-top: 20px;
     font-size: 5em;
     margin-left: 40px;
     color: #CC0033;
-}
-
-#memoryboard{
-    max-width:90%;
-    float: left;
 }
 table{
     float: left;
