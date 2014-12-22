@@ -3,8 +3,8 @@
 
 
 #memoryboard{
-    max-width:90%;
-    float: left;
+    max-width:100%;
+    min-width: 100%;
 }
 h1{
     margin-top: 20px;
@@ -12,13 +12,12 @@ h1{
     margin-left: 40px;
     color: #CC0033;
 }
+
 table{
-    float: left;
     background: #CC0033;
     margin-left: 40px;
     margin-top: 50px;
     margin-bottom: 10px;
-    
 }
 a{
     width: 75px;

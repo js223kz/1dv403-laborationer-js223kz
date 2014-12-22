@@ -63,13 +63,12 @@ function Board(rows, cols, id){
             
             if(tilesValueArray.length < 2){
         		
-        		
         		if(tilesValueArray.length === 0){
         			tilesValueArray.push(image.imageValue);
                     tilesValueId.push(image.id);
                     console.log("noll"); 
                     ++clicks;
-        		} else if(tilesValueArray.length === 1){
+        		}else if(tilesValueArray.length === 1){
         		    
         		    if(tilesValueId[0] !== image.id){
                         console.log("inte samma");
@@ -79,24 +78,23 @@ function Board(rows, cols, id){
                         console.log(tilesValueArray.length);
                     }
         		
-        			
         			if(tilesValueArray[0] === tilesValueArray[1]){
         			    console.log("lika");
                         tilesFlipped +=2;
                         tilesValueArray = [];
                         tilesValueId = [];
-        				// Check to see if the whole board is cleared
+
         				if(tilesFlipped === that.memoryArray.length){
         					 console.log("spelet färdigt");
                             displayScoreText(clicks/2);
         				}
-			    } else {
+			        } else {
 				    setTimeout(flipBack, 1000);   
-				}
-				
-			}
-		}
-	}
+				    }
+			    }
+		    }
+	    }
+        
         function flipBack(){
             var tileOne = document.getElementById(tilesValueId[0]);
             var tileTwo = document.getElementById(tilesValueId[1]);
@@ -106,6 +104,7 @@ function Board(rows, cols, id){
             tilesValueArray = [];
             tilesValueId = []; 
         }
+        
         function displayScoreText(numberOfRounds){
             var text = document.createElement("p");
             text.innerHTML = "Du klarade spelet på " + numberOfRounds + " rundor";
