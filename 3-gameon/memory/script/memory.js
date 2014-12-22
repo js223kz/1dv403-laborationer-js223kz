@@ -1,12 +1,15 @@
 "use strict";
 
 
-var Memory = {
+var memoryApp = {
     
     init : function(){
        
-    var memoryOne = new MemoryBoard.start(3, 4, "memoryboard1");
-    var memoryTwo = new MemoryBoard.start(4, 2, "memoryboard2");
+    var memoryOne = new Board(3, 4, "memoryboard1");
+   // var memoryTwo = new Board(4, 2, "memoryboard2");
+    memoryOne.start();
+    //memoryTwo.start();
+    
     }
 };
-window.onload = Memory.init;
+window.onload = memoryApp.init;
