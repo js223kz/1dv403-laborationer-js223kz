@@ -19,7 +19,9 @@ footer{
     left: 0;
     width: 100%;
     height: 60px;
-    border-top:1px dotted #CCC;
+    border-top: 3px dotted #FFF;
+    background-color: #000;
+    opacity: 0.3;
 }
 menu{
    max-width: 100%;
@@ -37,4 +39,11 @@ menu{
     left: auto;
     right: auto;
     position: relative;
+}
+.wrapper{
+    background-color: #000;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top: 10px;
 }
