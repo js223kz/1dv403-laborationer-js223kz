@@ -6,15 +6,23 @@
         <link rel="stylesheet" href="css/main.css">
     </head> 
     <body>
-        <footer>
+        <footer id="desktopfooter">
             <menu>
                 <button id="thumbnailsbutton" class="menubutton"></button>
             </menu>
         </footer>
-        <script src="lib/mustache.js"></script>
-        <script id="templateWindow" type="x-tmpl-mustache">
+        <script src="lib/mustache.js/mustache.js"></script>
+        <script class="templatewindow" type="x-tmpl-mustache">
+                <header class="templateheader">
+                    <h1 class="templateheadertext">{{ text }}</h1>
+                    <button class="templateclosebutton"></button>
+                </header>
+                <main class="templatecontent"></main>
+                <footer class="templatefooter"></footer>
+            </div>
         </script>
         <script src="js/TemplateWindow.js"></script>
+        <script src="js/ThumbNailWindow.js"></script>
         <script src="js/main.js"></script>
     </body>
 </html>

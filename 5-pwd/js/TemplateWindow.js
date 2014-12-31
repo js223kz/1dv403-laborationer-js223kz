@@ -1,16 +1,22 @@
-
 "use strict";
 
-var JOSZEP = JOSZEP || {};
-JOSZEP.windows = JOSZEP.windows || {};
-JOSZEP.windows.templateWindow = JOSZEP.windows.templateWindow || {
-    
-    init: function(){
-        var body = document.querySelector("body");
-       var template = document.createElement("div");
-       template.setAttribute("class", "wrapper");
-       body.appendChild(template);
-       
+function TemplateWindow(id, positionX, positionY){
+    this.id = id;
+    this.positionX = positionX + "px";
+    this.positionY = positionY + "px";
+}
+TemplateWindow.prototype.getId = function(){
+    return this.id;
+}
+TemplateWindow.prototype.getPositionX = function(){
+    return this.positionX;
+}
+TemplateWindow.prototype.getPositionY = function(){
+    return this.positionY;
+}
 
-    }
+TemplateWindow.prototype.closeWindow = function (currentWindow){
+    currentWindow.remove();
 };
+
+
