@@ -56,7 +56,6 @@ menu{
 .templateheadertext{
     display: inline;
     color: #fff;
-    
 }
 .templateclosebutton{
     position: relative;
@@ -72,4 +71,16 @@ menu{
 .templatefooter{
     height: 30px;
     margin-top370pc: 0px;
+}
+.thumbnailcontainer{
+    width: auto;
+    height: auto;
+    
+}
+.thumbnailimage{
+    width: 75px;
+    height: 50px;
+    background-color: #000;
+    float: left;
+    
 }
