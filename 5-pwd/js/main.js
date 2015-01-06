@@ -13,7 +13,7 @@ JOSZEP.startWindow = JOSZEP.startWindow || {
         thumbNailsBtn.addEventListener("click", function(){
             positionX += 30;
             positionY += 30;
-            var newThumbNailWin = new ImageWindow(new Date(), positionX, positionY);
+            var newThumbNailWin = new ImageWindow(new Date(), positionX, positionY, "Byt skrivbordsbild");
             newThumbNailWin.createWindow();
 
         });

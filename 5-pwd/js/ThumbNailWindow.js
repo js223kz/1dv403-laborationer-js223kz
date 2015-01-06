@@ -1,11 +1,12 @@
 "use strict";
 
-function ImageWindow(id, positionX, positionY){
-    TemplateWindow.call(this, id, positionX, positionY); 
+function ImageWindow(id, positionX, positionY, headLine){
+    TemplateWindow.call(this, id, positionX, positionY, headLine); 
 
-    var containerWindow = document.getElementById(this.id);
-    var containerContent = containerWindow.querySelector(".templatecontent");
-     var response;
+    var templateWindow = document.getElementById(this.id);
+    var templateContent = templateWindow.querySelector(".templatecontent");
+    var response;
+   
     
     this.createWindow = function(){
        
@@ -15,7 +16,7 @@ function ImageWindow(id, positionX, positionY){
         AJAX_req.onreadystatechange = function(){
             if( AJAX_req.readyState == 4 && AJAX_req.status == 200){
                 response = JSON.parse(AJAX_req.responseText);
-                ImageWindow.prototype.renderContent(response, containerContent); 
+                ImageWindow.prototype.renderContent(response, templateContent); 
             }
         };
         AJAX_req.send(); 
@@ -25,38 +26,50 @@ function ImageWindow(id, positionX, positionY){
 ImageWindow.prototype = Object.create(TemplateWindow.prototype);
 ImageWindow.prototype.constructor = ImageWindow;
 
-
-ImageWindow.prototype.renderContent = function(response, containerContent){
+ImageWindow.prototype.renderContent = function(response, templateContent){
     var jsonArray = [];
-    var j = 0;
-    var i = 0;
-
+   
     for(var item in response){
        jsonArray.push({URL:response[item].URL, thumbURL:response[item].thumbURL});
     }
     
-    jsonArray.forEach(function(item){
-        console.log(item.URL);
-    });
+    renderGridLayout();
     
-    var rows = Math.ceil(jsonArray.length / 3);
-
-    var thumbnailTable = document.createElement("table");
-        thumbnailTable.setAttribute("class", "thumbnailTable");
-    var thumbnailContainer = document.createElement("tr");
-        thumbnailContainer.setAttribute("class", "thumbnailcontainer");
-    var thumbnailImage = document.createElement("td");
-        thumbnailImage.setAttribute("class", "thumbnailimage");
-    
-    for(i = 0; i < 3; i++){
-        containerContent.appendChild(thumbnailContainer);
-            
-            for(j=0; j < rows; j++){
-                thumbnailContainer.appendChild(thumbnailImage);
-                   
+    function renderGridLayout(){
+        
+        var thumbNailTable = document.createElement("table");
+            thumbNailTable.setAttribute("class", "thumbnailtable");
+            templateContent.appendChild(thumbNailTable);
+        
+        var numberOfRows = Math.ceil(jsonArray.length / 3);
+        var rows = 0;
+        var columns = 0;
+        
+        for(rows = 0; rows < numberOfRows; rows++){
+            for(columns=0; columns < 3; columns++){
+                createThumbNails(rows, columns, thumbNailTable);
             }
         }    
-    
+    }
+    function createThumbNails(rows, cols, thumbNailTable){
+        var position = rows*3 + cols;
         
+        
+        var imageWrapper = document.createElement("div");
+            imageWrapper.setAttribute("class", "imagewrapper");
+        var thumbNailImage = document.createElement("img");
+            thumbNailImage.setAttribute("class", "thumbnailimage");
+            thumbNailImage.src = jsonArray[position].thumbURL;
+            
+        var backgroundImage = document.querySelector("html");
+            
+            thumbNailImage.addEventListener("click", function(e){
+                //backgroundImage.background.style = jsonArray[position].URL;
+                console.log("hello");
+            });     
+                                
+            imageWrapper.appendChild(thumbNailImage);
+            thumbNailTable.appendChild(imageWrapper);      
+    }
 };
 

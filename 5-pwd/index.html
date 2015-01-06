@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>JavaScript - Laboration 5 - Projektet</title>
         <link rel="stylesheet" href="css/main.css">
+        <link href='https://fonts.googleapis.com/css?family=Princess+Sofia' rel='stylesheet' type='text/css'>
     </head> 
     <body>
         <footer id="desktopfooter">
@@ -14,13 +15,19 @@
         <script src="lib/mustache.js/mustache.js"></script>
         <script class="templatewindow" type="x-tmpl-mustache">
                 <header class="templateheader">
+                    <img class="templateicon"></img>
                     <h1 class="templateheadertext">{{ text }}</h1>
                     <button class="templateclosebutton"></button>
                 </header>
                 <main class="templatecontent"></main>
-                <footer class="templatefooter"></footer>
-            </div>
+                <footer class="templatefooter">
+                    <figure class="activityindicator">
+                        <img class="activityindicatorimage"></img>
+                        <figcaption class="activityindicatortext">Loading</figcaption>
+                    </figure>
+                </footer>
         </script>
+
         <script src="js/TemplateWindow.js"></script>
         <script src="js/ThumbNailWindow.js"></script>
         <script src="js/main.js"></script>

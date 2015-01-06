@@ -1,10 +1,11 @@
 "use strict";
 
-function TemplateWindow(id, positionX, positionY){
+function TemplateWindow(id, positionX, positionY, headLine){
     this.id = id;
     this.positionX = positionX + "px";
     this.positionY = positionY + "px";
-    this.response;
+    this.headLine = headLine;
+    
     var body = document.querySelector("body");
     var wrapper = document.createElement("div");
         wrapper.setAttribute("class", "templatewrapper");
@@ -13,12 +14,12 @@ function TemplateWindow(id, positionX, positionY){
         wrapper.style.top = this.positionX;
                        
         body.appendChild(wrapper);
-                    
+    
     var template = document.querySelector(".templatewindow").innerHTML;
     Mustache.parse(template);
                     
     var view ={
-        text: "Placeholdertext",
+        text: this.headLine,
     };
     wrapper.innerHTML = Mustache.render(template, view);
                     
@@ -29,31 +30,10 @@ function TemplateWindow(id, positionX, positionY){
         });
 
 }
-TemplateWindow.prototype.getId = function(){
-    return this.id;
-}
-TemplateWindow.prototype.getPositionX = function(){
-    return this.positionX;
-}
-TemplateWindow.prototype.getPositionY = function(){
-    return this.positionY;
-}
 
 TemplateWindow.prototype.closeWindow = function (currentWindow){
     currentWindow.remove();
 };
-TemplateWindow.prototype.getJsonCall = function(url){
-    var AJAX_req = new XMLHttpRequest();
-        AJAX_req.open( "GET",url, true);
-        
-    AJAX_req.onreadystatechange = function(){
-        if( AJAX_req.readyState == 4 && AJAX_req.status == 200){
-            this.response = JSON.parse(AJAX_req.responseText);
-            return this.response;    
-            }
-        };
-        AJAX_req.send();
-        
-};
+    
 
 
