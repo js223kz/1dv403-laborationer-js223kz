@@ -6,7 +6,7 @@ function ImageWindow(id, positionX, positionY, headLine){
     var templateWindow = document.getElementById(this.id);
     var templateContent = templateWindow.querySelector(".templatecontent");
     var response;
-   
+    var activityindicator = document.querySelector(".activityindicator");
     
     this.createWindow = function(){
        
@@ -17,6 +17,7 @@ function ImageWindow(id, positionX, positionY, headLine){
             if( AJAX_req.readyState == 4 && AJAX_req.status == 200){
                 response = JSON.parse(AJAX_req.responseText);
                 ImageWindow.prototype.renderContent(response, templateContent); 
+                //activityindicator.display.style = "none";
             }
         };
         AJAX_req.send(); 
@@ -54,18 +55,15 @@ ImageWindow.prototype.renderContent = function(response, templateContent){
     function createThumbNails(rows, cols, thumbNailTable){
         var position = rows*3 + cols;
         
-        
         var imageWrapper = document.createElement("div");
             imageWrapper.setAttribute("class", "imagewrapper");
         var thumbNailImage = document.createElement("img");
             thumbNailImage.setAttribute("class", "thumbnailimage");
             thumbNailImage.src = jsonArray[position].thumbURL;
-            
-        var backgroundImage = document.querySelector("html");
-            
+        var body = document.querySelector("body");
             thumbNailImage.addEventListener("click", function(e){
-                //backgroundImage.background.style = jsonArray[position].URL;
-                console.log("hello");
+               var div = document.getElementById("imagediv");
+               div.src= jsonArray[position].URL;
             });     
                                 
             imageWrapper.appendChild(thumbNailImage);
