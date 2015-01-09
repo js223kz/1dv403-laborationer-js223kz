@@ -50,6 +50,7 @@ function Board(rows, cols, id){
                 image.id = that.id + position;
                 image.imageValue = that.memoryArray[position];
                 boardLink.addEventListener("click", function(e){
+                    e.preventDefault();
                     flipTile(image);
                 });      
                                 
