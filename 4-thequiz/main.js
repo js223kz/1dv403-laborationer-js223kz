@@ -7,8 +7,6 @@ JOSZEP.init = function(){
     var numberOfGuesses = 0;
     var responseQuestion;
     var responseURL;
-    getJson(url);
-    
     
     var input = document.getElementById("textfield");
     var messageText = document.querySelector(".answertext");
@@ -17,11 +15,12 @@ JOSZEP.init = function(){
         answerbutton.addEventListener("click", function(e){
             messageText.innerHTML = "";
             numberOfGuesses++;
-            console.log(numberOfGuesses);
             e.preventDefault();
             sendAnswer(input.value, responseURL);
+            input.value = "";
         });
     
+    getJson(url);
     
     //connect to server and get json result
     function getJson(url){
@@ -40,7 +39,7 @@ JOSZEP.init = function(){
         AJAX_req.send(null); 
     }
     
-    //present the question
+    //update question
     function updateQuestion(responseQuestion){
     var question = document.querySelector(".question");
        question.innerHTML = responseQuestion;
@@ -48,7 +47,6 @@ JOSZEP.init = function(){
    
     //send user answer to server and get result
     function sendAnswer(inputvalue, responseURL){
-        
         var answerResponse;
         var AJAX_post = new XMLHttpRequest();
         AJAX_post.open("POST", responseURL, true);
@@ -64,7 +62,6 @@ JOSZEP.init = function(){
                         messageText.innerHTML = "Spelet är slut. Du klarade det på " + numberOfGuesses + " försök";
                         messageText.style.color = "green";
                     }
-                    console.log(answerResponse.message);
                     getJson(answerResponse.nextURL);
                 }else{
                    messageText.innerHTML = "Svaret är fel.Försök igen!";
