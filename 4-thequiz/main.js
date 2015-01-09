@@ -5,8 +5,23 @@ var JOSZEP = JOSZEP || {};
 JOSZEP.init = function(){
     var url = "http://vhost3.lnu.se:20080/question/1";
     var numberOfGuesses = 0;
-    
+    var responseQuestion;
+    var responseURL;
     getJson(url);
+    
+    
+    var input = document.getElementById("textfield");
+    var messageText = document.querySelector(".answertext");
+   
+    var answerbutton = document.getElementById("answerbutton");
+        answerbutton.addEventListener("click", function(e){
+            messageText.innerHTML = "";
+            numberOfGuesses++;
+            console.log(numberOfGuesses);
+            e.preventDefault();
+            sendAnswer(input.value, responseURL);
+        });
+    
     
     //connect to server and get json result
     function getJson(url){
@@ -15,33 +30,25 @@ JOSZEP.init = function(){
             AJAX_req.open("GET", url, true);
         
         AJAX_req.onreadystatechange = function(){
-            
             if(AJAX_req.readyState == 4 && AJAX_req.status == 200){
                 response = JSON.parse(AJAX_req.responseText);
-                getQuestion(response);
+                responseQuestion = response.question;
+                responseURL = response.nextURL;
+                updateQuestion(responseQuestion);
             }
         };
         AJAX_req.send(null); 
     }
     
     //present the question
-    function getQuestion(response){
-        var question = document.querySelector(".question");
-        question.innerHTML = response.question;
-        
-        var input = document.getElementById("textfield");
-        var answerbutton = document.getElementById("answerbutton");
-        
-        answerbutton.addEventListener("click", function(e){
-            numberOfGuesses++;
-            console.log(numberOfGuesses);
-            
-            e.preventDefault();
-            sendAnswer(input.value, response.nextURL);
-        });
+    function updateQuestion(responseQuestion){
+    var question = document.querySelector(".question");
+       question.innerHTML = responseQuestion;
     }
+   
     //send user answer to server and get result
     function sendAnswer(inputvalue, responseURL){
+        
         var answerResponse;
         var AJAX_post = new XMLHttpRequest();
         AJAX_post.open("POST", responseURL, true);
@@ -52,11 +59,16 @@ JOSZEP.init = function(){
             if(AJAX_post.readyState == 4) {
                 answerResponse = JSON.parse(AJAX_post.responseText);
                 
-                if(answerResponse.nextURL !== undefined){
+                if(AJAX_post.status == 200){
+                    if(answerResponse.nextURL === undefined){
+                        messageText.innerHTML = "Spelet är slut. Du klarade det på " + numberOfGuesses + " försök";
+                        messageText.style.color = "green";
+                    }
                     console.log(answerResponse.message);
                     getJson(answerResponse.nextURL);
                 }else{
-                   console.log(answerResponse.message); 
+                   messageText.innerHTML = "Svaret är fel.Försök igen!";
+                   messageText.style.color = "red";
                 }
             }
         };

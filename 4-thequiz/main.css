@@ -19,6 +19,10 @@ h1{
     font-size: 2em;
     text-align: center;
 }
+.answertext{
+    font-size: 1em;
+    text-align: center;
+}
 #textfield{
     margin-left: auto;
     margin-right: auto;
