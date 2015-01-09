@@ -5,8 +5,8 @@ var JOSZEP = JOSZEP || {};
 JOSZEP.init = function(){
     var url = "http://vhost3.lnu.se:20080/question/1";
     var numberOfGuesses = 0;
-    var responseQuestion;
-    var responseURL;
+    var responseQuestion = null;
+    var responseURL = null;
     
     var input = document.getElementById("textfield");
     var messageText = document.querySelector(".answertext");
@@ -59,7 +59,7 @@ JOSZEP.init = function(){
                 
                 if(AJAX_post.status == 200){
                     if(answerResponse.nextURL === undefined){
-                        messageText.innerHTML = "Spelet är slut. Du klarade det på " + numberOfGuesses + " försök";
+                        messageText.innerHTML = "Frågorna är slut. Du klarade det på " + numberOfGuesses + " försök";
                         messageText.style.color = "green";
                     }
                     getJson(answerResponse.nextURL);
