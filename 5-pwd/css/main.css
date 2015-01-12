@@ -6,7 +6,6 @@
 	50%  { transform: rotate(180deg); opacity: 1.0; }
 	to   { transform: rotate(360deg); opacity: 0.2; }
 }
-
 body{
     background: url('pics/DSC_6332.JPG') no-repeat center center fixed;
     -moz-background-size: cover;
@@ -26,7 +25,7 @@ body{
     left: 0;
     width: 100%;
     height: 60px;
-    background-color: #f5f5dc;
+    background-color: #000;
 }
 menu{
    max-width: 100%;
@@ -40,10 +39,11 @@ menu{
 .menubutton{
     width: 50px;
     height: 50px;
-    background-color: #ccc;
-    left: auto;
-    right: auto;
-    position: relative;
+    background: url(pics/desktop_medium.png) no-repeat;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
 .templatewrapper{
     background-color: #f5f5dc;
@@ -58,34 +58,33 @@ menu{
     height: 40px;
     margin-top: 0px;
     background-color: #eaeab4;
-    
 }
 .templateicon{
-    width: 30px;
-    height: 30px;
-    margin-left: 20px;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    border: 1px solid #000;
     float: left;
+    width: 25px;
+    height: 25px;
+    margin-left: 5px;
+    margin-top: 5px;
+    content: url('pics/desktop_small.png');
 }
 .templateheadertext{
     float: left;
-    width: 230px;
-    color: #a5682a;
-    padding-left: 5px;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    width: 80%;
+    color: #000;
+    padding-left: 10px;
+    margin-top: 10px;
     font-family: 'Princess Sofia';
     font-size: 1em;
     
 }
 .templateclosebutton{
-    float:left;
-    height: 40px;
-    width:50px;
+    float: left;
+    width: 25px;
+    height: 25px;
+    margin-top: 5px;
+    margin-right: 5px;
+    background: url(pics/close.png) no-repeat;
+    border: none;
 }
 .templatecontent{
     width: 100%;
@@ -101,26 +100,22 @@ menu{
 }
 .activityindicator{
     margin-left: 20px;
-
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 .activityindicatorimage{
-	width: 15px;
-	height: 15px;
-	border: 4px solid #a5682a;
-	border-right-color: #fff;
-	border-radius: 50%;
-	box-shadow: 0 0 25px 2px #eee;
-	animation: spin 1s linear infinite;
-    float: left;
+	width: 16px;
+	height: 16px;
+    content: url(pics/ajax-loader.gif) no-repeat;
 }
 .activityindicatortext{
-    margin-left: 30px;
-    color: #a5682a;
+    color: #000;
     font-family: 'Princess Sofia';
     font-size: 1em;
     float: left;
+    padding-right: 10px;
 }
-
 .thumbnailtable{
     margin-left: 10px;
     width: 95%;

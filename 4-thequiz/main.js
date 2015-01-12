@@ -42,7 +42,7 @@ JOSZEP.init = function(){
     //update question
     function updateQuestion(responseQuestion){
     var question = document.querySelector(".question");
-       question.innerHTML = responseQuestion;
+        question.innerHTML = responseQuestion;
     }
    
     //send user answer to server and get result
@@ -53,7 +53,6 @@ JOSZEP.init = function(){
         AJAX_post.setRequestHeader('Content-Type', 'application/json');
         
         AJAX_post.onreadystatechange = function() {
-            
             if(AJAX_post.readyState == 4) {
                 answerResponse = JSON.parse(AJAX_post.responseText);
                 
@@ -63,14 +62,13 @@ JOSZEP.init = function(){
                         messageText.style.color = "green";
                     }
                     getJson(answerResponse.nextURL);
-                }else{
-                   messageText.innerHTML = "Svaret är fel.Försök igen!";
-                   messageText.style.color = "red";
+                    
+                    }else{
+                       messageText.innerHTML = "Svaret är fel.Försök igen!";
+                       messageText.style.color = "red";
+                    }
                 }
-            }
-        };
-        
-        
+            };
         var answer = JSON.stringify({"answer":inputvalue});
         AJAX_post.send(answer);
     }

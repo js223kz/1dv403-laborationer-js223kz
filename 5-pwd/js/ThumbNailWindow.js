@@ -1,28 +1,32 @@
 "use strict";
+"use strict";
 
 function ImageWindow(id, positionX, positionY, headLine){
     TemplateWindow.call(this, id, positionX, positionY, headLine); 
-
+    
+    var body = document.querySelector("body");
     var templateWindow = document.getElementById(this.id);
     var templateContent = templateWindow.querySelector(".templatecontent");
-    var response;
-    var activityindicator = document.querySelector(".activityindicator");
+
+    templateWindow.addEventListener("click", function(e){
+        body.appendChild(templateWindow);
+    });
     
-    this.createWindow = function(){
-       
-        var AJAX_req = new XMLHttpRequest();
-            AJAX_req.open( "GET","https://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/", true);
+    var response = null;
+    
+    var AJAX_req = new XMLHttpRequest();
+        AJAX_req.open( "GET","https://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/", true);
         
         AJAX_req.onreadystatechange = function(){
             if( AJAX_req.readyState == 4 && AJAX_req.status == 200){
                 response = JSON.parse(AJAX_req.responseText);
-                ImageWindow.prototype.renderContent(response, templateContent); 
-                //activityindicator.display.style = "none";
+                ImageWindow.prototype.renderContent(response, templateContent);
+                templateWindow.querySelector(".activityindicator").style.display = "none";
             }
+            
         };
         AJAX_req.send(); 
-        };
-      
+
 }
 ImageWindow.prototype = Object.create(TemplateWindow.prototype);
 ImageWindow.prototype.constructor = ImageWindow;
@@ -39,9 +43,8 @@ ImageWindow.prototype.renderContent = function(response, templateContent){
     function renderGridLayout(){
         
         var thumbNailTable = document.createElement("table");
-            thumbNailTable.setAttribute("class", "thumbnailtable");
-            templateContent.appendChild(thumbNailTable);
-        
+        thumbNailTable.setAttribute("class", "thumbnailtable");
+        templateContent.appendChild(thumbNailTable);
         var numberOfRows = Math.ceil(jsonArray.length / 3);
         var rows = 0;
         var columns = 0;
@@ -70,4 +73,3 @@ ImageWindow.prototype.renderContent = function(response, templateContent){
             thumbNailTable.appendChild(imageWrapper);      
     }
 };
-
