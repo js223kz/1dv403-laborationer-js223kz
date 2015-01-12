@@ -17,17 +17,18 @@ JOSZEP.startWindow = JOSZEP.startWindow || {
             e.preventDefault();
             positionX += 30;
             positionY += 30; 
-            console.log(positionY);
             var date = new Date();
-            var windowEnd = (height-40)/2;
+            var windowEnd = (height-490);
+            
             if(positionY > windowEnd){
-                positionY = 0;
-                positionX = 0;
-                console.log("bigger");
+                positionY = 30;
+                positionX = 30;
             }else{
                
             }
-            newWindow = new ImageWindow(date.getTime(), positionX, positionY, "Byt skrivbordsbild");
+            newWindow = new ThumbNailWindow(date.getTime(), positionX, positionY, "Tumnagelbilder");
+            newWindow.renderTemplate();
+            newWindow.fillContent();
         });
        
     }

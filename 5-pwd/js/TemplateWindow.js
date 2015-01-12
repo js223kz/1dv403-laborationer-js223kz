@@ -5,8 +5,11 @@ function TemplateWindow(id, positionX, positionY, headLine){
     this.positionX = positionX + "px";
     this.positionY = positionY + "px";
     this.headLine = headLine;
-    console.log(this.id);
-    //create template for new window
+}
+
+//create template for new window
+TemplateWindow.prototype.renderTemplate = function (){
+   
     var body = document.querySelector("body");
     var wrapper = document.createElement("div");
         wrapper.setAttribute("class", "templatewrapper");
@@ -31,19 +34,6 @@ function TemplateWindow(id, positionX, positionY, headLine){
            e.cancelBubble = true;
            currentWindow.remove();
        });
+};
 
-}
 
-
-TemplateWindow.prototype.closeWindow = function (currentWindow){
-    currentWindow.remove();
-};
-TemplateWindow.prototype.getWindowId = function (){
-    return this.id;
-};
-TemplateWindow.prototype.focusWindow = function (id){
-    document.getElementById(id).focus();
-};
-TemplateWindow.prototype.closeWindow = function (currentWindow){
-    currentWindow.remove();
-};
