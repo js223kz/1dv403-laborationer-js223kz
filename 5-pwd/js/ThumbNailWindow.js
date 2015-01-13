@@ -64,8 +64,8 @@ ThumbNailWindow.prototype.renderContent = function (response, templateContent){
             thumbNailImage.src = jsonArray[position].thumbURL;
             
             thumbNailImage.addEventListener("click", function(e){
-                var positionX = 500;
-                var positionY = 200;
+                var positionX = 200;
+                var positionY = 400;
                 var date = new Date();
                 var newWindow = new ImageWindow(date.getTime(), positionX, positionY, "Vald Bild");
                 newWindow.renderTemplate();

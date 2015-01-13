@@ -8,9 +8,11 @@ ImageWindow.prototype = new TemplateWindow();
 ImageWindow.prototype.fillContent = function (image, width, height){
     var response = null;
     var body = document.querySelector("body");
+    
     var templateWindow = document.getElementById(this.id);
         templateWindow.style.width = "auto";
         templateWindow.style.height = "auto";
+    
     
     var templateContent = templateWindow.querySelector(".templatecontent");
         templateContent.style.height = "auto";

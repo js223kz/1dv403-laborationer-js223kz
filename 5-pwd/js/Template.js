@@ -1,15 +1,8 @@
 "use strict";
-
-function TemplateWindow(id, positionX, positionY, headLine){
-    this.id = id;
-    this.positionX = positionX + "px";
-    this.positionY = positionY + "px";
-    this.headLine = headLine;
-}
-
-//create template for new window
-TemplateWindow.prototype.renderTemplate = function (width, height){
-   
+var JOSZEP = {
+    
+    createTemplate : function(id, positionX, positionY, width, height){
+        
     var body = document.querySelector("body");
     var wrapper = document.createElement("div");
         wrapper.setAttribute("class", "templatewrapper");
@@ -36,4 +29,5 @@ TemplateWindow.prototype.renderTemplate = function (width, height){
            e.cancelBubble = true;
            currentWindow.remove();
        });
+    } 
 };

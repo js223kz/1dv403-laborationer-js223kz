@@ -1,5 +1,3 @@
-"use strict";
-
 var JOSZEP = JOSZEP || {};
 JOSZEP.startWindow = JOSZEP.startWindow || {
     windowsArray : [],
@@ -26,7 +24,7 @@ JOSZEP.startWindow = JOSZEP.startWindow || {
             }else{
                
             }
-            newWindow = new ThumbNailWindow(date.getTime(), positionX, positionY, "Tumnagelbilder");
+            newWindow = new ThumbNailWindow(date.getTime(), positionX, positionY, "ImageViewer");
             newWindow.renderTemplate();
             newWindow.fillContent();
         });
