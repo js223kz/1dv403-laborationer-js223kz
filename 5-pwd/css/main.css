@@ -41,12 +41,13 @@ menu{
     display: block;
 }
 .templatewrapper{
-    background-color: #f5f5dc;
-    width: 350px;
+    width: auto;
     height: 450px;
+    background-color: #f5f5dc;
     position: absolute;
     border: 1px solid #fff;
     border-radius: 5px;
+   
 }
 .templateheader{
     width: 100%;
@@ -61,6 +62,7 @@ menu{
     margin-left: 5px;
     margin-top: 5px;
     content: url('pics/desktop_small.png');
+   
 }
 .templateheadertext{
     float: left;
@@ -82,8 +84,8 @@ menu{
     border: none;
 }
 .templatecontent{
-    width: 100%;
-    height: "auto";
+    width: 350px;
+    height: 350px;
     float: left;
     overflow: scroll;
 }
@@ -111,14 +113,9 @@ menu{
     float: left;
     padding-right: 10px;
 }
-.thumbnailwrapper{
-    margin-left: 10px;
-    width: 95%;
-    height: 280px;
-}
 .imagewrapper{
-    width: 85px;
-    height: 60px;
+    width: 105px;
+    height: 105px;
     margin: 5px;
     border: 1px solid #eaeab4;
     float: left;
@@ -126,8 +123,10 @@ menu{
     background-color: #fff;
 }
 .thumbnailimage{
-    padding: 5px;
-    margin-right: auto;
+    top: 50%;
     margin-left: auto;
+    margin-right: auto;
     display: block;
+    position: relative;
+    transform: translateY(-50%);
 }

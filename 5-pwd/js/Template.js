@@ -1,16 +1,18 @@
 "use strict";
-var JOSZEP = {
-    
-    createTemplate : function(id, positionX, positionY, width, height){
-        
+
+function TemplateWindow(id, positionX, positionY, headLine){
+    this.id = id;
+    this.positionX = positionX + "px";
+    this.positionY = positionY + "px";
+    this.headLine = headLine;
+}
+TemplateWindow.prototype.renderTemplate = function(){
     var body = document.querySelector("body");
     var wrapper = document.createElement("div");
         wrapper.setAttribute("class", "templatewrapper");
         wrapper.id = this.id;
         wrapper.style.left = this.positionY;
         wrapper.style.top = this.positionX;
-        wrapper.style.height = height;
-        wrapper.style.width = width;
                        
         body.appendChild(wrapper);
     
@@ -29,5 +31,7 @@ var JOSZEP = {
            e.cancelBubble = true;
            currentWindow.remove();
        });
-    } 
-};
+    wrapper.addEventListener("click", function(e){
+        body.appendChild(wrapper);
+    });
+}

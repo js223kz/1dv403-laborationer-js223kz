@@ -26,7 +26,7 @@ JOSZEP.startWindow = JOSZEP.startWindow || {
             }
             newWindow = new ThumbNailWindow(date.getTime(), positionX, positionY, "ImageViewer");
             newWindow.renderTemplate();
-            newWindow.fillContent();
+            newWindow.renderContent();
         });
        
     }
