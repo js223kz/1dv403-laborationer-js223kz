@@ -7,13 +7,8 @@
 	to   { transform: rotate(360deg); opacity: 0.2; }
 }
 body{
-    background: url('pics/DSC_6332.JPG') no-repeat center center fixed;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background: url('pics/DSC_6332.JPG') repeat;
 }
-
 #desktopfooter{
     position: absolute;
     bottom: 0;
@@ -114,8 +109,6 @@ menu{
     padding-right: 10px;
 }
 .imagewrapper{
-    width: 105px;
-    height: 105px;
     margin: 5px;
     border: 1px solid #eaeab4;
     float: left;
@@ -129,4 +122,5 @@ menu{
     display: block;
     position: relative;
     transform: translateY(-50%);
+    padding: 3px;
 }
